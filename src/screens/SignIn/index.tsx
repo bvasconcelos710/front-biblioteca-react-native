@@ -38,7 +38,10 @@ export function SignIn() {
       <KeyboardAvoidingView behavior="position" enabled>
         <Container onLayout={() => navigation.navigate("Maps")}>
           <ContentImage>
-            <Image source={LogoIFPB} />
+            <Image 
+            source={LogoIFPB} 
+            />
+            
           </ContentImage>
           <Title title="Entrar" />
           <View>
@@ -79,7 +82,7 @@ export function SignIn() {
             )}
           </View>
           <Button
-            title="Inscrever-se"
+            title="Entrar"
             onPress={handleSubmit(handleUserLogin)}
             activeOpacity={0.8}
           />
