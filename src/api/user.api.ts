@@ -10,7 +10,7 @@ export const login = async (email: string, password: string) => {
 export const getUsers = () => api.get('/usuarios');
 
 // GET a single usuario by ID
-export const getUser = (id: string) => api.get(`/usuarios/${id}`);
+export const getUserById = (id: string) => api.get(`/usuarios/${id}`);
 
 // POST a new usuario
 export const createUser = (userData: object) => api.post('/usuarios', userData);

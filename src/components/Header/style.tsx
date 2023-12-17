@@ -11,8 +11,7 @@ export const HeaderContainer = styled.View`
 `;
 
 export const Logo = styled.Image`
-  width: 50px;
-  height: 30px;
+  width: 60px;
 `;
 
 export const TitleContainer = styled.View`
@@ -20,7 +19,7 @@ export const TitleContainer = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   color: #FFFFFF;
 `;
@@ -30,7 +29,7 @@ export const LogoutButton = styled.TouchableOpacity`
 `;
 
 export const LogoutButtonText = styled.Text`
-  font-size: 16px;
+  font-size: 20px;
   color: #FFFFFF;
   text-decoration: none
 `;

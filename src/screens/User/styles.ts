@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#f2f2f2', // Cor de fundo da tela
-    padding: 20,
+    // padding: 20,
   },
   profileSection: {
     backgroundColor: '#fff', // Cor de fundo da seção do perfil

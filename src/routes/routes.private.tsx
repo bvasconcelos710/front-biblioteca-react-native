@@ -6,6 +6,7 @@ import { useTheme } from 'styled-components/native';
 import { Home } from '../screens/Home';
 import { Books } from '../screens/Books';
 import { BookBorrows } from '../screens/BookBorrows';
+import User from '../screens/User';
 
 const { Navigator, Screen } = createBottomTabNavigator();
 
@@ -19,8 +20,8 @@ export function PrivateRoutes() {
         tabBarActiveTintColor: '#aeaeb3',
         tabBarInactiveTintColor: 'white',
         tabBarShowLabel: true,
-        tabBarLabelStyle: { fontSize: 20, fontWeight: '700' },
-        tabBarStyle: { backgroundColor: theme.colors.secondary },
+        tabBarLabelStyle: { fontSize: 16, fontWeight: '400' },
+        tabBarStyle: { backgroundColor: theme.colors.secondary, },
         headerShown: false,
       }}
       initialRouteName="Home"
@@ -32,7 +33,17 @@ export function PrivateRoutes() {
         options={{
           title: 'Home',
           tabBarIcon: ({ size, color }) => (
-            <Icon name="list" size={size} color={color} />
+            <Icon name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Screen
+        name="User"
+        component={User}
+        options={{
+          title: 'Perfil',
+          tabBarIcon: ({ size, color }) => (
+            <Icon name="person" size={size} color={color} />
           ),
         }}
       />
@@ -42,7 +53,7 @@ export function PrivateRoutes() {
         options={{
           title: 'Empréstimos',
           tabBarIcon: ({ size, color }) => (
-            <Icon name="add" size={size} color={color} />
+            <Icon name="book" size={size} color={color} />
           ),
         }}
       />
@@ -52,7 +63,7 @@ export function PrivateRoutes() {
         options={{
           title: 'Livros',
           tabBarIcon: ({ size, color }) => (
-            <Icon name="add" size={size} color={color} />
+            <Icon name="menu-book" size={size} color={color} />
           ),
         }}
       />

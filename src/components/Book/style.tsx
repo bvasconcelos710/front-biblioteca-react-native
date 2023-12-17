@@ -5,6 +5,7 @@ export const BookContainer = styled.TouchableOpacity`
   margin: 10px auto;
   padding: 10px;
   border: 2px solid green;
+  border-radius: 10px;
 `;
 
 export const BookTitle = styled.Text`
