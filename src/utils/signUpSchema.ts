@@ -13,6 +13,9 @@ export const signUpSchema = z
       .string({ required_error: "Campo vazio" })
       .trim()
       .email("E-mail inválido"),
+    category: z.string({ required_error: "Campo vazio" })
+      .min(5, "Categoria deve ter no minimo 5 caracteres")
+      .max(10, "Categoria deve ter no máximo 10 caracteres"),
     phone: z
       .string({ required_error: "Campo vazio" })
       .min(8, "Telefone deve ter no minimo 8 dígitos"),

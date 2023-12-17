@@ -4,6 +4,9 @@ export declare global {
       SignIn: undefined;
       SignUp: undefined;
       Maps: undefined;
+      Home: undefined;
+      Books: undefined;
+      BookBorrows: undefined;
     }
   }
 }

@@ -10,22 +10,26 @@ interface BookProps {
 */
 
 interface BookProps {
-    title: string;
-    ISBN: string;
-    author: string;
-    year: string;
-    onPress: () => void;
+    book: {
+        id: number;
+        title: string;
+        ISBN: string;
+        author: string;
+        year: string;
+    }
+    onBorrow: (bookId: number) => void;
 }
 
-export function Book({ title, ISBN, author, year, onPress }: BookProps) {
+export function Book({ book, onBorrow: borrow }: BookProps) {
+    const { id, title, ISBN, author, year } = book;
     return (
-        <BookContainer onPress={onPress}>
+        <BookContainer>
             <BookTitle>{title}</BookTitle>
             <BookInfo>ISBN: {ISBN}</BookInfo>
             <BookInfo>Autor: {author}</BookInfo>
             <BookInfo>Ano: {year}</BookInfo>
             <ButtonContainer>
-                <BorrowButton onPress={onPress}>
+                <BorrowButton onPress={() => borrow(id)}>
                     <BorrowButtonText>Emprestar</BorrowButtonText>
                 </BorrowButton>
             </ButtonContainer>

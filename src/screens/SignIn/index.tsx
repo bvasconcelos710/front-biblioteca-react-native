@@ -17,6 +17,7 @@ import { ILoginUser, signInSchema } from "../../utils/signInSchema";
 import { Container, ContentImage, Image } from "./styles";
 
 import LogoIFPB from "../../assets/logoIFPB.png";
+import { useAuth } from "../../hooks/useAuth";
 
 export function SignIn() {
   const {
@@ -28,15 +29,20 @@ export function SignIn() {
   });
 
   const navigation = useNavigation();
+  const { login } = useAuth();
 
-  function handleUserLogin(data: ILoginUser) {
-    Alert.alert("Sucesso", "Conta logada com sucesso", [{ text: "ok" }]);
+  async function handleUserLogin(data: ILoginUser) {
+    login(data.email, data.password).then((response) => {
+      Alert.alert("Sucesso", "Conta logada com sucesso", [{ text: "Ok", onPress: () => navigation.navigate("Home") }]);
+    });
   }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <KeyboardAvoidingView behavior="position" enabled>
-        <Container onLayout={() => navigation.navigate("Maps")}>
+        <Container 
+        // onLayout={() => navigation.navigate("Maps")}
+        >
           <ContentImage>
             <Image 
             source={LogoIFPB} 
@@ -46,21 +52,22 @@ export function SignIn() {
           <Title title="Entrar" />
           <View>
             <Controller
-              name="matricula"
+              name="email"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  placeholder="Matricula"
-                  onChangeText={onChange}
-                  value={value}
-                  inputMode="numeric"
-                  keyboardType="numeric"
-                  isError={errors?.matricula?.message ? true : false}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                inputMode="email"
+                isError={errors?.email?.message ? true : false}
                 />
-              )}
+                )}
             />
-            {!!errors.matricula && (
-              <ErrorMessage description={errors.matricula.message} />
+            {!!errors.email && (
+              <ErrorMessage description={errors.email.message} />
             )}
           </View>
           <View>

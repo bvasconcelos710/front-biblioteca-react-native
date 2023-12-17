@@ -6,10 +6,11 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "react-native";
 import { ThemeProvider } from "styled-components";
+import { THEME } from "./src/global/styles/themes";
 
 import { Loading } from "./src/components/Loading";
-import { THEME } from "./src/global/styles/themes";
 import { Routes } from "./src/routes";
+import { AuthProviderContext } from "./src/context/AuthProvider";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,26 +20,15 @@ export default function App() {
 
   return (
     <ThemeProvider theme={THEME}>
-      <NavigationContainer
-        theme={{
-          colors: {
-            background: THEME.colors.background_primary,
-            primary: "default",
-            card: THEME.colors.background_primary,
-            text: "default",
-            border: "default",
-            notification: "default",
-          },
-          dark: true,
-        }}
-      >
+      
         <StatusBar
           barStyle="dark-content"
           backgroundColor="transparent"
           translucent
         />
-        {!fontsLoaded ? <Loading /> : <Routes />}
-      </NavigationContainer>
+        <AuthProviderContext>
+          {!fontsLoaded ? <Loading /> : <Routes />}
+        </AuthProviderContext>
     </ThemeProvider>
   );
 }

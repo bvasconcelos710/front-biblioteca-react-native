@@ -1,9 +1,10 @@
 import { z } from "zod";
 
 export const signInSchema = z.object({
-  matricula: z
+  email: z
     .string({ required_error: "Campo vazio" })
-    .min(5, "Matricula deve ter no minimo 5 caracteres"),
+    .trim()
+    .email("E-mail inválido"),
   password: z
     .string({ required_error: "Campo vazio" })
     .trim()

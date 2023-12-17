@@ -15,6 +15,8 @@ import { Input } from "../../components/Input";
 import { Title } from "../../components/Title";
 import { IRegisterUser, signUpSchema } from "../../utils/signUpSchema";
 import { Container } from "./styles";
+import { api } from "../../api/api";
+import { createUser } from "../../api/user.api";
 
 export function SignUp() {
   const {
@@ -28,9 +30,25 @@ export function SignUp() {
   const navigate = useNavigation();
 
   function handleUserRegister(data: IRegisterUser) {
-    Alert.alert("Sucesso", "Cadastro realizado com sucesso", [
-      { text: "Fazer login", onPress: () => navigate.goBack() },
-    ]);
+    const user = {
+      nome: data.name,
+      email: data.email,
+      matricula: data.matricula,
+      categoria: data.category,
+      telefone: data.phone,
+      senha: data.password,
+    }
+
+    createUser(user).then((response) => 
+      Alert.alert("Sucesso", "Cadastro realizado com sucesso", [
+        { text: "Fazer login", onPress: () => navigate.goBack() },
+      ])
+    ).catch((error) => 
+      Alert.alert("Erro", `Erro ao cadastrar usuário: ${error}`, [
+        { text: "Ok" },
+      ])
+    );
+
   }
 
   return (
@@ -38,23 +56,22 @@ export function SignUp() {
       <KeyboardAvoidingView behavior="position" enabled>
         <Container>
           <Title title="Criar conta" />
-
           <View>
             <Controller
               name="name"
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  placeholder="Nome"
-                  onChangeText={onChange}
-                  value={value}
-                  isError={errors?.name?.message ? true : false}
+                placeholder="Nome"
+                onChangeText={onChange}
+                value={value}
+                isError={errors?.name?.message ? true : false}
                 />
-              )}
+                )}
             />
             {!!errors.name && (
               <ErrorMessage description={errors.name.message} />
-            )}
+              )}
           </View>
 
           <View>
@@ -63,18 +80,18 @@ export function SignUp() {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  placeholder="Matricula"
-                  onChangeText={onChange}
-                  value={value}
-                  inputMode="numeric"
-                  keyboardType="numeric"
-                  isError={errors?.matricula?.message ? true : false}
+                placeholder="Matricula"
+                onChangeText={onChange}
+                value={value}
+                inputMode="numeric"
+                keyboardType="numeric"
+                isError={errors?.matricula?.message ? true : false}
                 />
-              )}
+                )}
             />
             {!!errors.matricula && (
               <ErrorMessage description={errors.matricula.message} />
-            )}
+              )}
           </View>
 
           <View>
@@ -83,19 +100,38 @@ export function SignUp() {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Email"
-                  keyboardType="email-address"
-                  autoCapitalize="none"
-                  inputMode="email"
-                  isError={errors?.email?.message ? true : false}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Email"
+                keyboardType="email-address"
+                autoCapitalize="none"
+                inputMode="email"
+                isError={errors?.email?.message ? true : false}
                 />
-              )}
+                )}
             />
             {!!errors.email && (
               <ErrorMessage description={errors.email.message} />
-            )}
+              )}
+          </View>
+
+          <View>
+            <Controller
+              name="category"
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <Input
+                onChangeText={onChange}
+                value={value}
+                placeholder="Categoria"
+                autoCapitalize="none"
+                isError={errors?.category?.message ? true : false}
+                />
+                )}
+            />
+            {!!errors.email && (
+              <ErrorMessage description={errors.email.message} />
+              )}
           </View>
 
           <View>
@@ -104,17 +140,17 @@ export function SignUp() {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Telefone"
-                  keyboardType="phone-pad"
-                  isError={errors?.phone?.message ? true : false}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Telefone"
+                keyboardType="phone-pad"
+                isError={errors?.phone?.message ? true : false}
                 />
-              )}
+                )}
             />
             {!!errors.phone && (
               <ErrorMessage description={errors.phone.message} />
-            )}
+              )}
           </View>
 
           <View>
@@ -123,17 +159,17 @@ export function SignUp() {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Senha"
-                  secureTextEntry
-                  isError={errors?.password?.message ? true : false}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Senha"
+                secureTextEntry
+                isError={errors?.password?.message ? true : false}
                 />
-              )}
+                )}
             />
             {!!errors.password && (
               <ErrorMessage description={errors.password.message} />
-            )}
+              )}
           </View>
 
           <View>
@@ -142,17 +178,17 @@ export function SignUp() {
               control={control}
               render={({ field: { onChange, value } }) => (
                 <Input
-                  onChangeText={onChange}
-                  value={value}
-                  placeholder="Confirme a senha"
-                  secureTextEntry
-                  isError={errors?.passwordConfirm?.message ? true : false}
+                onChangeText={onChange}
+                value={value}
+                placeholder="Confirme a senha"
+                secureTextEntry
+                isError={errors?.passwordConfirm?.message ? true : false}
                 />
-              )}
+                )}
             />
             {!!errors.passwordConfirm && (
               <ErrorMessage description={errors.passwordConfirm.message} />
-            )}
+              )}
           </View>
 
           <Button
@@ -160,6 +196,7 @@ export function SignUp() {
             onPress={handleSubmit(handleUserRegister)}
             activeOpacity={0.8}
           />
+          <Button title="< Voltar" onPress={() => navigate.goBack()} />
         </Container>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
