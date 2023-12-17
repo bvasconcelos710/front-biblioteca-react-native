@@ -91,6 +91,7 @@ export function SignIn() {
             onPress={() => navigation.navigate("SignUp")}
             activeOpacity={0.8}
           />
+          
         </Container>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
