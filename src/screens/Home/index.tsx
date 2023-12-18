@@ -16,6 +16,9 @@ export function Home() {
                 <Menu onPress={() => navigation.navigate("BookBorrows")} >
                     <Title>Empréstimos</Title>
                 </Menu>
+                <Menu onPress={() => navigation.navigate("Maps")} >
+                    <Title>Endereço</Title>
+                </Menu>
             </Container >
         </>
     );
