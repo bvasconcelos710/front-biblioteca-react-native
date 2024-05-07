@@ -2,7 +2,9 @@
 
 Aplicativo de uma biblioteca desenvolvido com Expo, React Native e Typescript.
 A aplicação consome uma API REST de uma biblioteca, que se encontra no repositório:
-- `https://github.com/bvasconcelos710/backend-biblioteca`
+ ````bash
+ https://github.com/bvasconcelos710/backend-biblioteca
+ ````
 
 ## Tecnologias Utilizadas
 
@@ -15,13 +17,18 @@ A aplicação consome uma API REST de uma biblioteca, que se encontra no reposit
 
 1. Clone o repositório:
 
-- `git clone https://github.com/seu-usuario/nome-do-repositorio.git `
+````bash
+git clone https://github.com/seu-usuario/nome-do-repositorio.git 
+````
 
 2. Instale as dependências:
 
-- `npm install`
+````bash
+npm install
+````
 
 3. Inicie o projeto:
-
-- `npm start`
+````bash
+npm start
+````
 
