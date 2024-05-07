@@ -1,6 +1,8 @@
 # Projeto front-end de uma biblioteca em React native
 
-Aplicativo de uma biblioteca desenvolvimento com react native para consurmir uma API REST de uma biblioteca.
+Aplicativo de uma biblioteca desenvolvido com Expo, React Native e Typescript.
+A aplicação consome uma API REST de uma biblioteca, que se encontra no repositório:
+- `https://github.com/bvasconcelos710/backend-biblioteca`
 
 ## Tecnologias Utilizadas
 
