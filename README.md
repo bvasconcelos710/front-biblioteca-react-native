@@ -13,21 +13,21 @@ A aplicação consome uma API REST de uma biblioteca, que se encontra no reposit
 - Expo
 - Styled Components
 
-## Instalação
+## Para executar o projeto:
 
-1. Clone o repositório:
+### Clone o repositório:
 
 ````bash
 git clone https://github.com/seu-usuario/nome-do-repositorio.git 
 ````
 
-2. Instale as dependências:
+### Instale as dependências:
 
 ````bash
 npm install
 ````
 
-3. Inicie o projeto:
+### Inicie o projeto:
 ````bash
 npm start
 ````
